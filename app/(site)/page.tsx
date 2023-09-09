@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AuthForm from "./components/AuthForm";
 export default function Home() {
   // funktion med namnet "Home" som är exporteras som standard från detta modul
   //Inuti funktionen returneras en enkel JSX-struktur som består av ett "div"-element.
@@ -16,8 +17,11 @@ export default function Home() {
         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
           Sign in to your account
         </h2>
+        <h4 className="mt-6 text-center text-xl font-bold tracking-tight text-white">
+          PostBox: Your Digital Letter to the World
+        </h4>
       </div>
-      {/* Auth from goes here! */}
+      <AuthForm />
     </div>
   );
 }
