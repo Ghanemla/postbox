@@ -8,6 +8,8 @@ import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import axios from "axios";
+import { toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 type variant = "LOGIN" | "REGISTER";
 
@@ -38,18 +40,42 @@ const AuthForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     if (variant === "REGISTER") {
-      axios.post("/api/register", data);
+      axios
+        .post("/api/register", data)
+        .catch(() => toast.error("Someting went wrong!"))
+        .finally(() => setIsLoading(false));
     }
 
     if (variant === "LOGIN") {
-      // nextAuth signIn
+      signIn("credentials", {
+        ...data,
+        redirect: false,
+      })
+        .then((callback) => {
+          if (callback?.error) {
+            toast.error("Invalid credentials Please try again");
+          }
+          if (callback?.ok && !callback?.error) {
+            toast.success("Login Successful");
+          }
+        })
+        .finally(() => setIsLoading(false));
     }
   };
 
-  const socalAction = (action: string) => {
+  const socialAction = (action: string) => {
     setIsLoading(true);
 
-    // NextAuth socal Sign in
+    signIn(action, { redirect: false })
+      .then((callback) => {
+        if (callback?.error) {
+          toast.error("Invalid credentials Please try again");
+        }
+        if (callback?.ok && !callback?.error) {
+          toast.success("Login Successful");
+        }
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -107,11 +133,11 @@ const AuthForm = () => {
           <div className=" mt-6 flex gap-2">
             <AuthSocialButton
               icon={BsGithub}
-              onClick={() => socalAction("github")}
+              onClick={() => socialAction("github")}
             />
             <AuthSocialButton
               icon={BsGoogle}
-              onClick={() => socalAction("google")}
+              onClick={() => socialAction("google")}
             />
           </div>
         </div>
