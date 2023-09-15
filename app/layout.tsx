@@ -2,6 +2,7 @@ import "./globals.css"; // importerar en CSS-fil med namnet "globals.css"
 import type { Metadata } from "next"; // importerar en typ med namnet "Metadata" från "next" modulen
 import { Inter } from "next/font/google"; //importerar ett typsnitt (font) med namnet "Inter" från "next/font/google"
 import ToasterContext from "./context/ToasterContext";
+import AuthContext from "./context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] }); //kapas en instans av typsnittet "Inter" och tilldelas variabeln "inter"
 
@@ -24,8 +25,10 @@ export default function RootLayout({
     <html lang="en">
       {
         <body className={inter.className}>
-          <ToasterContext />
-          {children}
+          <AuthContext>
+            <ToasterContext />
+            {children}
+          </AuthContext>
         </body> /*body element Klassen för body  elementet sätts till "inter.className vilket  tillämpar typsnittet "Inter" på hela sidans text*/
       }
     </html>
