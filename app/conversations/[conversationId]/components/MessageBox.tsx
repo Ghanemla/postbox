@@ -6,7 +6,6 @@ import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import Image from "next/image";
-import { is } from "date-fns/locale";
 
 interface MessageBoxProps {
   data: FullMessageType;
