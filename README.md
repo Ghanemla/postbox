@@ -1,34 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Postbox
 
-## Getting Started
+Postbox is a social media platform that allows users to share thoughts, articles, and engage in discussions. This platform is built using Next.js, NextAuth for authentication, and various integrations for services such as GitHub, Google, Cloudinary, and Pusher.
 
-First, run the development server:
+## Installation
+
+To get started with the Postbox project, follow these steps:
+
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/Ghanemla/postbox.git
+cd postbox
+```
+
+### 2. Set up Environment Variables
+
+Create a `.env` file in the root directory of the project. Add the following environment variables and obtain their respective values:
+
+```bash
+DATABASE_URL=
+NEXTAUTH_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+NEXT_PUBLIC_PUSHER_APP_KEY=
+PUSHER_ID=
+PUSHER_SECRET=
+```
+
+Make sure to fill in the values for these variables according to your setup and configurations. This file is crucial for the proper functioning of the application.
+
+## Environment Variables
+
+- `DATABASE_URL`: Your database connection URL.
+- `NEXTAUTH_SECRET`: Secret key for NextAuth authentication.
+- `GITHUB_ID` and `GITHUB_SECRET`: API keys for GitHub authentication.
+- `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`: API keys for Google authentication.
+- `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`: Cloudinary cloud name for image handling.
+- `NEXT_PUBLIC_PUSHER_APP_KEY`: Pusher app key for real-time functionality.
+- `PUSHER_ID` and `PUSHER_SECRET`: Pusher API keys for real-time functionality.
+
+### 3. Install Dependencies
+
+```
+npm install
+# or
+yarn install
+```
+
+### 4. Run the Application
+
+```
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the development server. You can view the application by visiting `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Routing in the API Folder
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The API folder within this project contains Next.js API routes, which handle various server-side functionalities and serve as endpoints for the application. These routes are responsible for managing data retrieval, authentication, and other backend operations.
 
-## Learn More
+## Demo
 
-To learn more about Next.js, take a look at the following resources:
+For a live demo of the Postbox application, you can visit [Postbox Live Demo](https://postbox-kappa.vercel.app/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or create a pull request.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the [MIT License](https://chat.openai.com/c/LICENSE).
